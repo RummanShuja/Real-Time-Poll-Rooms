@@ -49,31 +49,30 @@ function CreatePoll() {
 
 
   return (
-    <div className="border-2 border-black p-4 mx-20 my-10">
-      <h2 className="font-bold text-5xl text-center mb-7">Create Poll</h2>
+    <div className="border-2 border-black p-2 sm:p-4 mx-3 sm:mx-4 md:mx-20 my-10">
+      <h2 className="font-semibold text-3xl md:text-5xl text-center mb-3">Create Poll</h2>
       <form onSubmit={handleSubmit}>
-        <div className="m-5">
-          Question:
+        <div className="m-2 sm:m-5">
+          Question: &nbsp;
           <input
             type="text"
             placeholder="Enter your question here"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
-            className="outline-none border border-gray-700 rounded-sm mx-2 px-3 py-1 w-100 text-sm"
+            className="outline-none border border-gray-700 rounded-sm px-1 md:px-3 py-1 w-full md:w-[60%] text-sm"
             required
           />
         </div>
-
-        <div className="m-5 ">
+        <div className="m-2 sm:m-5 ">
           <div>
             Add Options
           </div>
 
-          <div className="ml-3 mt-2">
+          <div className="sm:ml-3 mt-2">
 
             {options.map((opt, index) => (
               <div key={index} className="flex items-center">
-                {`Option ${index + 1}`}:
+                <span className="hidden sm:inline">{`Option ${index + 1}`}:</span>
                 <input
                   type="text"
                   placeholder={`Enter Option ${index + 1}`}
@@ -106,7 +105,7 @@ function CreatePoll() {
 
       <div>
         {recentPolls.length > 0 && (
-          <div className="mt-10 w-xl">
+          <div className="mt-10 sm:w-[90%] md:w-[60%] ">
             <h3 className="font-bold text-lg mb-4">
               Recently Visited Polls
             </h3>

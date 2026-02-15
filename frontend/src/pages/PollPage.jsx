@@ -86,12 +86,13 @@ function PollPage() {
   const totalVotes = poll.options.reduce((sum, opt) => sum + opt.votes, 0);
 
   return (
-    <div className="border-2 border-black p-10 mx-20 my-10">
+    <div className="border-2 border-black p-3 sm:p-7 mx-3 sm:mx-20 my-10">
       {/* question */}
       <div>
-        <h2 className="font-bold text-3xl mb-7">Q) {poll.question}</h2>
+        <h2 className="font-semibold text-2xl sm:text-3xl mb-7">Q) {poll.question}</h2>
       </div>
-
+      
+      
       {/* options */}
       <div>
 
@@ -99,7 +100,7 @@ function PollPage() {
           const percentage = totalVotes === 0 ? 0 : (opt.votes / totalVotes * 100).toFixed(1);
 
           return (
-            <div className={`my-3 w-[60%] ${(selectedIndex !== null && selectedIndex !== index) ? "opacity-70" : "opacity-100"}`} key={index}>
+            <div className={`my-3 px-2 w-full md:w-[70%] ${(selectedIndex !== null && selectedIndex !== index) ? "opacity-70" : "opacity-100"}`} key={index}>
               <button
                 className={`text-white mx-2 px-5 py-1 rounded-lg mb-1   ${(selectedIndex !== null && selectedIndex === index) ? "bg-green-500" : "bg-black"} `}
                 disabled={selectedIndex !== null}
@@ -144,7 +145,7 @@ function PollPage() {
 
 
       {/* Navigate to createPoll */}
-      <div className="mt-16">
+      <div className="mt-16 mb-4">
         <Link
           to="/"
           className="boder-2 boder-black bg-black text-white px-7 py-3 rounded-lg mt-4 text-lg">
