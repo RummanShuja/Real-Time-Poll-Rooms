@@ -2,6 +2,14 @@
 
 A full-stack web application that allows users to create polls, share them via a unique link, and collect votes with real-time result updates across all connected viewers.
 
+---
+
+## Live Links 
+* Live Demo(frontend): https://real-time-poll-rooms-tau.vercel.app/
+* Backend: https://real-time-poll-rooms-rw4a.onrender.com
+
+---
+
 ## Tech stack used:
 ### Frontend
 * React (UI framework)
