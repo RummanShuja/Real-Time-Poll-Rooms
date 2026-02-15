@@ -4,7 +4,7 @@ import axios from "axios";
 import { io } from "socket.io-client";
 import { Link } from "react-router-dom";
 
-const socket = io("http://localhost:3000");
+const socket = io("https://real-time-poll-rooms-rw4a.onrender.com");
 
 function PollPage() {
   const { id } = useParams();
@@ -20,7 +20,7 @@ function PollPage() {
   useEffect(() => {
     socket.emit("joinPoll", id);
 
-    axios.get(`http://localhost:3000/api/poll/${id}`)
+    axios.get(`https://real-time-poll-rooms-rw4a.onrender.com/api/poll/${id}`)
       .then(res => {
         setPoll(res.data);
 
@@ -53,7 +53,7 @@ function PollPage() {
 
   const handleVote = async (index) => {
     await axios.post(
-      `http://localhost:3000/api/poll/${id}/vote`,
+      `https://real-time-poll-rooms-rw4a.onrender.com/api/poll/${id}/vote`,
       { optionIndex: index }
     );
     localStorage.setItem(`voted_${id}`, index);

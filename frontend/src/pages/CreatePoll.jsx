@@ -38,7 +38,7 @@ function CreatePoll() {
     e.preventDefault();
 
     const res = await axios.post(
-      "http://localhost:3000/api/poll",
+      "https://real-time-poll-rooms-rw4a.onrender.com/api/poll",
       { question, options }
     );
 
