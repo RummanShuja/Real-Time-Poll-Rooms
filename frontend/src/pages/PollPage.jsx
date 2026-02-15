@@ -68,14 +68,13 @@ function PollPage() {
     }
     catch(err){
       toast.error(err.response?.data?.message || "Something went wrong");
-      // alert(err.response?.data?.message || "Something went wrong!");
     }
     
   };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(shareUrl);
-    alert("Link copied!");
+    toast.success("Link copied!");
   };
 
   if(error){
