@@ -52,13 +52,22 @@ function PollPage() {
 
 
   const handleVote = async (index) => {
-    await axios.post(
-      `https://real-time-poll-rooms-rw4a.onrender.com/api/poll/${id}/vote`,
-      { optionIndex: index }
-    );
-    localStorage.setItem(`voted_${id}`, index);
-    setSelectedIndex(index);
-    alert("Your vote has been recorded")
+    try{
+
+      await axios.post(
+        `https://real-time-poll-rooms-rw4a.onrender.com/api/poll/${id}/vote`,
+        { optionIndex: index }
+      )
+      
+        localStorage.setItem(`voted_${id}`, index);
+        setSelectedIndex(index);
+        alert("Your vote has been recorded");
+      
+    }
+    catch(err){
+      alert(err.response?.data?.message || "Something went wrong!");
+    }
+    
   };
 
   const handleCopy = () => {
@@ -103,7 +112,7 @@ function PollPage() {
             <div className={`my-3 px-2 w-full md:w-[70%] ${(selectedIndex !== null && selectedIndex !== index) ? "opacity-70" : "opacity-100"}`} key={index}>
               <button
                 className={`text-white mx-2 px-5 py-1 rounded-lg mb-1   ${(selectedIndex !== null && selectedIndex === index) ? "bg-green-500" : "bg-black"} `}
-                disabled={selectedIndex !== null}
+                // disabled={selectedIndex !== null}
                 onClick={() => handleVote(index)}
               >
                 {opt.text}
