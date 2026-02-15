@@ -9,6 +9,7 @@ const socket = io("http://localhost:3000");
 function PollPage() {
   const { id } = useParams();
   const [poll, setPoll] = useState(null);
+  const [error, setError] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(() => {
     const savedIndex = localStorage.getItem(`voted_${id}`);
     return savedIndex !== null ? Number(savedIndex) : null;
@@ -34,7 +35,10 @@ function PollPage() {
           "recentPolls",
           JSON.stringify(updated)
         );
-      });
+      })
+      .catch(err=>{
+        setError(true);
+      })
 
     socket.on("voteUpdate", (updatedPoll) => {
       setPoll(updatedPoll);
@@ -61,6 +65,21 @@ function PollPage() {
     navigator.clipboard.writeText(shareUrl);
     alert("Link copied!");
   };
+
+  if(error){
+    return (
+      <div>
+        <h2 className="font-semibold text-2xl text-red-600">Poll not found!</h2>
+        <div className="mt-16">
+        <Link
+          to="/"
+          className="boder-2 boder-black bg-black text-white px-7 py-3 rounded-lg mt-4 text-lg">
+          Go back
+        </Link>
+      </div>
+      </div>
+    )
+  }
 
   if (!poll) return <div>Loading...</div>;
 
