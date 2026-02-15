@@ -97,6 +97,10 @@ app.post("/api/poll/:id/vote", async (req, res) => {
   res.json(poll);
 });
 
+app.get("/", (req,res)=>{
+  res.send("Api is working")
+})
+
 
 
 server.listen(PORT, ()=>{
