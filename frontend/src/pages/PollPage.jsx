@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { io } from "socket.io-client";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+
 
 const socket = io("https://real-time-poll-rooms-rw4a.onrender.com");
 
@@ -61,11 +63,12 @@ function PollPage() {
       
         localStorage.setItem(`voted_${id}`, index);
         setSelectedIndex(index);
-        alert("Your vote has been recorded");
+        toast.success("Your vote has been recorded");
       
     }
     catch(err){
-      alert(err.response?.data?.message || "Something went wrong!");
+      toast.error(err.response?.data?.message || "Something went wrong");
+      // alert(err.response?.data?.message || "Something went wrong!");
     }
     
   };

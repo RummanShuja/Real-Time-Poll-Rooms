@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import del from '../assets/del.svg';
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+
 
 function CreatePoll() {
   const [question, setQuestion] = useState("");
@@ -41,7 +43,7 @@ function CreatePoll() {
       "https://real-time-poll-rooms-rw4a.onrender.com/api/poll",
       { question, options }
     );
-
+    toast.success("Poll created")
     navigate(`/poll/${res.data.pollId}`);
   };
 
